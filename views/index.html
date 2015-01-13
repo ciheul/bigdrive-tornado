@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+</head>
+<body>
+  <header>
+    <h1>Prototype: SSE</h1>
+  </header>
+
+  <div id="content"></div>
+
+  <footer></footer>
+    
+  <script type="text/javascript">
+    var source = new EventSource('/sse/');
+    source.addEventListener('message', function (e) {
+      var p = document.createElement('p');
+      p.innerHTML = e.data;
+
+      var content = document.getElementById('content');
+      if (content.firstChild) {
+        content.insertBefore(p, content.firstChild);
+      } else {
+        content.appendChild(p);
+      }
+    });
+  </script>
+</body>
+</html>
