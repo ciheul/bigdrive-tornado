@@ -96,11 +96,13 @@ class PlayApi(tornado.web.RequestHandler):
         for i, c in enumerate(cs):
             if i == 0:
                 line = {
+                    'type': 'path',
                     'lat1': c['lat'], 'lon1': c['lon'],
                     'lat2': c['lat'], 'lon2': c['lon'],
                 }
             else:
                 line = {
+                    'type': 'path',
                     'lat1': cs[i-1]['lat'], 'lon1': cs[i-1]['lon'],
                     'lat2': c['lat'], 'lon2': c['lon'],
                 }
